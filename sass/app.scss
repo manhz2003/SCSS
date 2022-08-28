@@ -1,0 +1,115 @@
+@import './variable.scss';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin hoverNav {
+    color: #fff;
+    background-color: $hoverColor;
+}
+
+@mixin button($bgSign, $colorSign, $hoverSign) {
+    padding: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: $bgSign;
+    color: $colorSign;
+    &:hover {
+        background-color: $hoverSign;
+    }
+}
+
+nav {
+    width: 50%;
+    margin: 0 auto;
+    background-color: $bgColor;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    ul {
+        list-style: none;
+        display: flex;
+        li {
+            a {
+                text-decoration: none;
+                font-size: $fontSize;
+                color: $textColor;
+                padding: 16px 30px;
+                font-family: sans-serif;
+                &:hover {
+                    @include hoverNav;
+                }
+            }
+            position: relative;
+        }
+    }
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    font-size: $fontSize;
+    color: $textColor;
+    background-color: $bgColor;
+    margin-top: 16px;
+    .nav-item {
+        padding: 14px 38px;
+        &:hover {
+            @include hoverNav();
+            cursor: pointer;
+        }
+    }
+    display: none;
+}
+
+.hover:hover .nav-list {
+    display: block;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    .sign-in {
+        @include button(#198754, #f8f9fa, #537f6b);
+    }
+    .sign-out {
+        @include button(#dc3545, #f8f9fa, #cd888f);
+        margin-left: 18px;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    .content-button {
+        padding: 15px;
+        font-size: 20px;
+        color: #f3f5f3;
+        font-weight: 600;
+        border-radius: 10px;
+        background-color: #ee25b5;
+        border: 3px dashed #b10517;
+        cursor: pointer;
+        box-shadow: #c5dce5;
+    }
+    div {
+        @extend .content-button;
+        line-height: 30px;
+        margin-top: 10px;
+    }
+}
+
+.testCase {
+    color: #b10517;
+    font-size: 20px;
+}
